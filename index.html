@@ -276,6 +276,29 @@
   #contact{background:transparent !important;}
   .marquee{background:rgba(16,20,26,0.6) !important;}
   @media (prefers-reduced-motion: reduce){ .aurora i{animation:none;} #bgCanvas{display:none;} }
+
+  .project-card.planned{border-style:dashed; background:transparent;}
+  .project-card.planned .project-tag{background:rgba(85,214,192,0.12); color:var(--accent-cool);}
+  .project-card.wide{grid-column:1 / -1;}
+  .projects-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  @media (min-width:901px){ .projects-grid{grid-template-columns:repeat(3,1fr);} }
+  .btech-years{margin-top:56px; padding:26px 28px 30px; border:1px solid var(--border); border-radius:14px; background:rgba(33,42,52,0.6);}
+  .by-title{font-family:var(--font-display); font-weight:600; font-size:1.05rem; margin-bottom:26px;}
+  .by-title i{color:var(--accent); margin-right:8px;}
+  .by-track{position:relative; display:grid; grid-template-columns:repeat(4,1fr);}
+  .by-track::before{content:''; position:absolute; left:12.5%; right:12.5%; top:9px; height:2px; background:var(--border);}
+  .by-fill{position:absolute; left:12.5%; top:9px; height:2px; width:0; background:linear-gradient(90deg,var(--accent),var(--accent-cool)); animation:none;}
+  .by-fill.go{width:0; animation:byGrow 1.6s ease .3s forwards;}
+  @keyframes byGrow{ to{ width:6%; } }
+  .by-step{position:relative; display:flex; flex-direction:column; align-items:center; gap:2px; text-align:center;}
+  .by-dot{width:20px; height:20px; border-radius:50%; background:var(--bg); border:2px solid var(--border); margin-bottom:10px; position:relative; z-index:1;}
+  .by-step b{font-family:var(--font-display); font-size:.95rem;}
+  .by-step small{color:var(--text-muted); font-size:.8rem;}
+  .by-step em{font-style:normal; font-size:.7rem; margin-top:6px; padding:2px 10px; border-radius:999px; background:var(--accent); color:#15110b; font-weight:600;}
+  .by-step.now .by-dot{border-color:var(--accent); background:var(--accent); box-shadow:0 0 0 0 rgba(242,169,77,.6); animation:pulse 2s infinite;}
+  @keyframes pulse{ 70%{ box-shadow:0 0 0 12px rgba(242,169,77,0); } 100%{ box-shadow:0 0 0 0 rgba(242,169,77,0); } }
+  @media (max-width:520px){ .by-step b{font-size:.8rem;} .by-step small{font-size:.7rem;} }
+  .stat-text{font-size:1.9rem; line-height:1.55;}
 </style>
 </head>
 <body>
@@ -357,9 +380,9 @@
       <p class="section-sub">The short version.</p>
       <p class="about-copy">I'm part of the inaugural Bengaluru batch of B.Tech CSE (AI &amp; ML) students at Quad AI School of Technology and Management, affiliated with Medhavi Skills University. Most of my time goes into machine learning, deep learning, and data structures, with cybersecurity running a close second. Outside coursework, I like turning ideas into things that actually run — a hackathon research problem, an event registration platform, an app concept for smaller Indian towns — rather than leaving them as notes.</p>
       <div class="stats">
-        <div class="stat"><div class="stat-num" data-count="3">0</div><div class="stat-label">Projects built</div></div>
+        <div class="stat"><div class="stat-num" data-count="7">0</div><div class="stat-label">Projects</div></div>
         <div class="stat"><div class="stat-num" data-count="5">0</div><div class="stat-label">Skill areas</div></div>
-        <div class="stat"><div class="stat-num" data-count="4">0</div><div class="stat-label">Year B.Tech journey</div></div>
+        <div class="stat"><div class="stat-num stat-text">2026–30</div><div class="stat-label">B.Tech years</div></div>
       </div>
       <div class="about-facts">
         <div class="about-fact"><i class="fa-solid fa-gamepad"></i>Gaming &amp; esports on the side 🎮</div>
@@ -377,7 +400,6 @@
         <div class="quote-card"><i class="fa-solid fa-trophy quote-mark"></i><p class="quote-text">Smart India Hackathon 2026</p><p class="quote-by">Researching problem statement SIH26230 — low-cost breath-based detection. Ongoing.</p></div>
         <div class="quote-card"><i class="fa-solid fa-medal quote-mark"></i><p class="quote-text">Neo4j Hackathon &amp; Hack with India</p><p class="quote-by">Participated in both and secured 8th position.</p></div>
         <div class="quote-card"><i class="fa-solid fa-certificate quote-mark"></i><p class="quote-text">Google Analytics Certificate</p><p class="quote-by">Earned from Google — the base for my data analytics work.</p></div>
-        <div class="quote-card"><i class="fa-solid fa-award quote-mark"></i><p class="quote-text">Vedic Ganit Competition</p><p class="quote-by">Won at school level in Class X.</p></div>
         <div class="quote-card"><i class="fa-solid fa-gamepad quote-mark"></i><p class="quote-text">Esports event platform</p><p class="quote-by">Designed the registration flow for a multi-game esports event.</p></div>
         <div class="quote-card"><i class="fa-solid fa-graduation-cap quote-mark"></i><p class="quote-text">Inaugural Bengaluru batch</p><p class="quote-by">B.Tech CSE (AI &amp; ML), Quad AI School of Technology and Management.</p></div>
       </div>
@@ -414,11 +436,21 @@
           <div class="timeline-dot"></div>
           <div class="timeline-card">
             <div class="timeline-icon"><i class="fa-solid fa-brain"></i></div>
-            <div class="timeline-year">2026 — Present</div>
+            <div class="timeline-year">2026 — 2030</div>
             <div class="timeline-title">B.Tech CSE (AI &amp; ML)</div>
             <div class="timeline-place">Quad AI School of Technology and Management, Bengaluru — inaugural Bengaluru batch, affiliated with Medhavi Skills University</div>
             <p class="timeline-desc">Now deep in machine learning, deep learning, and cybersecurity fundamentals.</p>
           </div>
+        </div>
+      </div>
+    
+      <div class="btech-years">
+        <div class="by-title"><i class="fa-solid fa-road"></i> B.Tech journey · 2026 – 2030</div>
+        <div class="by-track"><div class="by-fill"></div>
+          <div class="by-step now"><span class="by-dot"></span><b>Year 1</b><small>2026 – 27</small><em>Now</em></div>
+          <div class="by-step"><span class="by-dot"></span><b>Year 2</b><small>2027 – 28</small></div>
+          <div class="by-step"><span class="by-dot"></span><b>Year 3</b><small>2028 – 29</small></div>
+          <div class="by-step"><span class="by-dot"></span><b>Year 4</b><small>2029 – 30</small></div>
         </div>
       </div>
     </div>
@@ -466,17 +498,17 @@
   <section class="section" id="projects">
     <div class="section-inner">
       <h2 class="section-heading">Projects</h2>
-      <p class="section-sub">Things I've actually built and researched.</p>
+      <p class="section-sub">Things I've built and researched.</p>
       <div class="projects-grid">
         <div class="project-card">
           <span class="project-tag">Startup · Concept stage</span>
           <div class="project-title">Locallo</div>
-          <p class="project-desc">An e-commerce concept for tier 2 and tier 3 towns and villages, built around how smaller-city buyers and sellers actually shop. Shaped end to end through a business model canvas and pitch deck.</p>
+          <p class="project-desc">An e-commerce concept for tier 2 and tier 3 towns and villages, built around how smaller-city buyers and sellers actually shop. Shaped through a business model canvas and pitch deck.</p>
           <a class="project-link" href="https://github.com/amankumar1997aaa-dotcom" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="project-card">
           <span class="project-tag">Event platform · Concept</span>
-          <div class="project-title">Esports registration site</div>
+          <div class="project-title">Esports registration platform</div>
           <p class="project-desc">Designed the participant registration flow for a multi-game esports event, built around a simple, straightforward sign-up experience for players and organizers.</p>
           <a class="project-link" href="https://github.com/amankumar1997aaa-dotcom" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fa-solid fa-arrow-right"></i></a>
         </div>
@@ -486,7 +518,12 @@
           <p class="project-desc">Ongoing research for a Smart India Hackathon 2026 problem statement, exploring how a low-cost device could flag substance use from a person's breath.</p>
           <a class="project-link" href="https://github.com/amankumar1997aaa-dotcom" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-      </div>
+        <div class="project-card wide">
+          <span class="project-tag">Web · Live</span>
+          <div class="project-title">Personal portfolio</div>
+          <p class="project-desc">This responsive site showcasing my education, skills and projects, deployed on GitHub Pages with HTML, CSS, JavaScript, GSAP animations and a Three.js scene.</p>
+          <a class="project-link" href="https://amankumar1997aaa-dotcom.github.io" target="_blank" rel="noopener noreferrer">View live <i class="fa-solid fa-arrow-right"></i></a>
+        </div></div>
     </div>
   </section>
 
@@ -676,7 +713,7 @@
         })();
       }
     }
-    if(reduceMotion) { document.querySelectorAll('.stat-num').forEach(n=>n.textContent=n.dataset.count); document.querySelectorAll('.section-heading').forEach(h=>h.classList.add('in')); return; }
+    if(reduceMotion) { document.querySelectorAll('.stat-num[data-count]').forEach(n=>n.textContent=n.dataset.count); document.querySelectorAll('.section-heading').forEach(h=>h.classList.add('in')); return; }
 
     // cursor glow
     if(window.matchMedia('(hover: hover)').matches){
@@ -705,7 +742,7 @@
       ScrollTrigger.batch(items,{start:'top 90%',once:true,onEnter:b=>gsap.to(b,{opacity:1,y:0,duration:0.8,stagger:0.12,ease:'power3.out',clearProps:'opacity,transform'})});
     });
     // count-up stats
-    document.querySelectorAll('.stat-num').forEach(n=>{
+    document.querySelectorAll('.stat-num[data-count]').forEach(n=>{
       const target=+n.dataset.count; const o={v:0};
       ScrollTrigger.create({trigger:n,start:'top 92%',once:true,onEnter:()=>gsap.to(o,{v:target,duration:1.6,ease:'power2.out',onUpdate:()=>{n.textContent=Math.round(o.v);}})});
     });
@@ -747,6 +784,10 @@
       requestAnimationFrame(frame);
     }
     frame();
+  })();
+  // B.Tech years bar
+  (function(){ const f=document.querySelector('.by-fill'); if(!f) return;
+    if(window.IntersectionObserver){ new IntersectionObserver((e,o)=>{ if(e[0].isIntersecting){ f.classList.add('go'); o.disconnect(); } },{threshold:.5}).observe(f); } else { f.classList.add('go'); }
   })();
 </script>
 </body>
